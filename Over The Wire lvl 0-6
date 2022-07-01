@@ -1,0 +1,302 @@
+!! IF YOU DON'T KNOW ABOUT LINUX KINDLY LEARN THE LINUX BASICS AND AFTER THAT DO THE OVERTHEWIRE !!
+
+##### OverTheWire Bandit Level 0 - 6 #####
+----- Walkthrough For Beginners -----
+
+How to connect to the OverTheWire server
+# Everytime you complete the level you need to connect the server each time.
+The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.
+
+# Command: ssh bandit0@bandit.labs.overthewire.org -p 2220
+
+ssh to connect with the server
+-p to define the port that is 2220
+
+# Output: This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit0@bandit.labs.overthewire.org's password: bandit0
+
+## Check whether you're in the right directory or not
+# Command: pwd
+# Output: /home/bandit0
+
+
+
+----- Bandit Level 0 → Level 1 -----
+## Level Goal
+The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.
+
+## Commands you may need to solve this level
+ls, cd, cat, file, du, find
+
+# Command: ls
+# Output: readme
+
+Let's understand! cat command allows us to create single or multiple files, view content of a file, concatenate files and redirect output in terminal or files.
+# Command: cat readme
+# Output: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+
+
+
+----- Bandit Level 1 → Level 2 -----
+## Level Goal
+The password for the next level is stored in a file called - located in the home directory
+
+## Commands you may need to solve this level
+ls, cd, cat, file, du, find
+
+# Command: exit
+# Ouput: logout
+Connection to bandit.labs.overthewire.org closed.
+
+## Connect again to bandit1 server
+# Command: ssh bandit1@bandit.labs.overthewire.org -p 2220
+# Output: This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit1@bandit.labs.overthewire.org's password: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+Note: You need to press Right Click and paste do not press CTRL+V in linux terminal and press Enter.
+
+# Command: pwd
+# Output: /home/bandit1
+
+# Command: ls -apls
+apls means all list available in this directory
+
+# Output: total 24
+4 -rw-r-----  1 bandit2 bandit1   33 May  7  2020 -
+4 drwxr-xr-x  2 root    root    4096 May  7  2020 ./
+4 drwxr-xr-x 41 root    root    4096 May  7  2020 ../
+4 -rw-r--r--  1 root    root     220 May 15  2017 .bash_logout
+4 -rw-r--r--  1 root    root    3526 May 15  2017 .bashrc
+4 -rw-r--r--  1 root    root     675 May 15  2017 .profile
+
+# Command: cat ./-
+./ to access this file
+# Output: CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+
+
+----- Bandit Level 2 → Level 3 -----
+## Level Goal
+The password for the next level is stored in a file called spaces in this filename located in the home directory
+
+## Commands you may need to solve this level
+ls, cd, cat, file, du, find
+
+## Exit and connect to bandit2 server as we did recently.
+
+# Command: pwd
+# Output: /home/bandit2
+
+# Command: ls-apls
+# Ouput: total 24
+4 drwxr-xr-x  2 root    root    4096 May  7  2020 ./
+4 drwxr-xr-x 41 root    root    4096 May  7  2020 ../
+4 -rw-r--r--  1 root    root     220 May 15  2017 .bash_logout
+4 -rw-r--r--  1 root    root    3526 May 15  2017 .bashrc
+4 -rw-r--r--  1 root    root     675 May 15  2017 .profile
+4 -rw-r-----  1 bandit3 bandit2   33 May  7  2020 spaces in this filename
+
+# Command: cat spaces\ in\ this\ filename
+\ defines that there are no spaces between them
+
+# Output: UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
+
+
+----- Bandit Level 3 → Level 4 -----
+## Level Goal
+The password for the next level is stored in a hidden file in the inhere directory.
+
+## Commands you may need to solve this level
+ls, cd, cat, file, du, find
+
+## Exit and connect to bandit3 server as we did recently.
+
+# Command: ls -apls
+# Ouput: total 24
+4 drwxr-xr-x  3 root root 4096 May  7  2020 ./
+4 drwxr-xr-x 41 root root 4096 May  7  2020 ../
+4 -rw-r--r--  1 root root  220 May 15  2017 .bash_logout
+4 -rw-r--r--  1 root root 3526 May 15  2017 .bashrc
+4 drwxr-xr-x  2 root root 4096 May  7  2020 inhere/
+4 -rw-r--r--  1 root root  675 May 15  2017 .profile
+
+# Command: cd inhere
+cd "Change directory" because the inhere is not a file it's a directory so we need to get into inhere directory by cd inhere.
+# Output: bandit3@bandit:~/inhere$
+
+# Command: ls -apls
+# Ouput: total 12
+4 drwxr-xr-x 2 root    root    4096 May  7  2020 ./
+4 drwxr-xr-x 3 root    root    4096 May  7  2020 ../
+4 -rw-r----- 1 bandit4 bandit3   33 May  7  2020 .hidden
+
+# Command: cat .hidden
+# Output: pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+
+
+
+----- Bandit Level 4 → Level 5 -----
+## Level Goal
+The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.
+
+## Commands you may need to solve this level
+ls, cd, cat, file, du, find
+
+## Exit and connect to bandit3 server as we did recently.
+
+# Command: pwd
+# Output: /home/bandit4
+
+# Command: ls -apls
+# Output: total 24
+4 drwxr-xr-x  3 root root 4096 May  7  2020 ./
+4 drwxr-xr-x 41 root root 4096 May  7  2020 ../
+4 -rw-r--r--  1 root root  220 May 15  2017 .bash_logout
+4 -rw-r--r--  1 root root 3526 May 15  2017 .bashrc
+4 drwxr-xr-x  2 root root 4096 May  7  2020 inhere/
+4 -rw-r--r--  1 root root  675 May 15  2017 .profile
+
+# Command: cd inhere
+# Output: bandit4@bandit:~/inhere$
+
+# Command: ls
+We used ls to just to see the main files you can use ls -apls as well it's your choice.
+
+# Ouput:
+-file00  -file02  -file04  -file06  -file08
+-file01  -file03  -file05  -file07  -file09
+
+Now we need to find the human-readable file
+# Command: find . -type f | xargs file
+
+We used find to find -type of file type and xargs file to human-readable it's the linux basics part so you don't need to worry about it.
+# Output:
+./-file01: data
+./-file00: data
+./-file06: data
+./-file03: data
+./-file05: data
+./-file08: data
+./-file04: data
+./-file07: ASCII text
+./-file02: data
+./-file09: data
+
+# Command: cat ./-file07
+# Ouput: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+
+
+
+----- Bandit Level 5 → Level 6 -----
+## Level Goal
+The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+
+human-readable
+1033 bytes in size
+not executable
+
+## Commands you may need to solve this level
+ls, cd, cat, file, du, find
+
+## Exit and connect to bandit3 server as we did recently.
+
+# Command: pwd
+# Output: /home/bandit5
+
+# Command: ls -apls
+We used ls to just to see the main files you can use ls -apls as well it's your choice. But ls -apls is recommended to check all the files.
+# Output: total 24
+4 drwxr-xr-x  3 root root    4096 May  7  2020 ./
+4 drwxr-xr-x 41 root root    4096 May  7  2020 ../
+4 -rw-r--r--  1 root root     220 May 15  2017 .bash_logout
+4 -rw-r--r--  1 root root    3526 May 15  2017 .bashrc
+4 drwxr-x--- 22 root bandit5 4096 May  7  2020 inhere/
+4 -rw-r--r--  1 root root     675 May 15  2017 .profile
+
+# Command: cd inhere
+# Output: bandit5@bandit:~/inhere$
+
+# Command: ls
+# Ouput:
+maybehere00  maybehere04  maybehere08  maybehere12  maybehere16
+maybehere01  maybehere05  maybehere09  maybehere13  maybehere17
+maybehere02  maybehere06  maybehere10  maybehere14  maybehere18
+maybehere03  maybehere07  maybehere11  maybehere15  maybehere19
+
+Challenge: We have to find the file according to given details we can't check each file right? we will waste our time.
+
+# Command: find . -type f -size 1033c ! -executable
+- f for file
+- -type to find
+- size to specify file size
+- ! -executable to specify the file which is non executable
+
+# Output: ./maybehere07/.file2
+
+# Command: cat ./maybehere07/.file2
+# Ouput: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+
+
+----- Bandit Level 6 → Level 7 -----
+## Level Goal
+The password for the next level is stored somewhere on the server and has all of the following properties:
+
+owned by user bandit7
+owned by group bandit6
+33 bytes in size
+
+## Commands you may need to solve this level
+ls, cd, cat, file, du, find, grep
+
+# Command: find . -type -user bandit7 -group bandit6 -size 33c
+-user for specify the user
+-group to specify group
+
+# Output: Tons of files ---> You need to find the password file
+File Needed: /var/lib/dpkg/info/bandit7.password
+
+Go each directory at a time to learn no need to copy the whole path.
+# Command: ls
+# Ouput:
+bin      home            lib64       opt         sbin   usr
+boot     initrd.img      libx32      proc        share  var
+cgroup2  initrd.img.old  lost+found  README.txt  srv    vmlinuz
+dev      lib             media       root        sys    vmlinuz.old
+etc      lib32           mnt         run         tmp
+
+# Command: cd var
+# Command: ls
+# Output: backups  cache  crash  lib  local  lock  log  mail  opt  run  spool  tmp
+
+# Command: pwd
+# Output: /var
+
+# Command: cd lib
+# Command: ls
+# Ouput: /var/lib
+
+# Command: ls
+# Output:
+apt                  emacsen-common   ispell     pam        ucf
+aspell               gems             logrotate  polkit-1   update-rc.d
+dbus                 git              man-db     python     urandom
+dhcp                 initramfs-tools  misc       sgml-base  vim
+dictionaries-common  initscripts      ntp        sudo       xml-core
+dpkg                 insserv          os-prober  systemd
+
+# Command: cd dpkg
+# Command: ls
+# Output:
+alternatives  diversions      lock          statoverride-old  triggers
+available     diversions-old  parts         status            updates
+cmethopt      info            statoverride  status-old
+
+# Command: cd info
+# Command: ls
+
+Now find this file "bandit7.password" or directly use it in command
+
+# Command: cat bandit7.password
+# Output: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
