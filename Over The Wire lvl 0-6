@@ -144,7 +144,7 @@ The password for the next level is stored in the only human-readable file in the
 ## Commands you may need to solve this level
 ls, cd, cat, file, du, find
 
-## Exit and connect to bandit3 server as we did recently.
+## Exit and connect to bandit4 server as we did recently.
 
 # Command: pwd
 # Output: /home/bandit4
@@ -200,7 +200,7 @@ not executable
 ## Commands you may need to solve this level
 ls, cd, cat, file, du, find
 
-## Exit and connect to bandit3 server as we did recently.
+## Exit and connect to bandit5 server as we did recently.
 
 # Command: pwd
 # Output: /home/bandit5
@@ -250,6 +250,8 @@ owned by group bandit6
 
 ## Commands you may need to solve this level
 ls, cd, cat, file, du, find, grep
+
+## Exit and connect to bandit6 server as we did recently.
 
 # Command: find . -type -user bandit7 -group bandit6 -size 33c
 -user for specify the user

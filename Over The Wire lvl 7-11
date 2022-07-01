@@ -1,0 +1,205 @@
+!! IF YOU DON'T KNOW ABOUT LINUX KINDLY LEARN THE LINUX BASICS AND AFTER THAT DO THE OVERTHEWIRE !!
+
+##### OverTheWire Bandit Level 7 - 11 #####
+----- Walkthrough For Beginners -----
+
+
+
+----- Bandit Level 7 → Level 8 -----
+## Level Goal
+The password for the next level is stored in the file data.txt next to the word millionth
+
+## Commands you may need to solve this level
+grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
+## First Connect the server as we learned recently
+- Level 6 password: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+# Command: pwd
+# Output: /home/bandit7
+
+# Command: ls -alps
+# Output: total 4108
+   4 drwxr-xr-x  2 root    root       4096 May  7  2020 ./
+   4 drwxr-xr-x 41 root    root       4096 May  7  2020 ../
+   4 -rw-r--r--  1 root    root        220 May 15  2017 .bash_logout
+   4 -rw-r--r--  1 root    root       3526 May 15  2017 .bashrc
+4088 -rw-r-----  1 bandit8 bandit7 4184396 May  7  2020 data.txt
+   4 -rw-r--r--  1 root    root        675 May 15  2017 .profile
+   
+# Command: strings data.txt | grep "millionth"
+
+strings sort out the text file and grep | "string name" so grep is finding "miilionth" in this file as a string.
+
+What is grep?
+Grep is a command-line tool that allows you to find a string in a file or stream. It can be used with a regular expression to be more flexible at finding strings.
+
+# Output: millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+
+
+
+----- Bandit Level 8 → Level 9 -----
+## Level Goal
+The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
+
+## Commands you may need to solve this level
+grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
+## Exit and connect to bandit8 server as we did recently.
+
+# Command: pwd
+# Output: /home/bandit8
+
+# Command: ls -apls
+# Output: total 56
+ 4 drwxr-xr-x  2 root    root     4096 May  7  2020 ./
+ 4 drwxr-xr-x 41 root    root     4096 May  7  2020 ../
+ 4 -rw-r--r--  1 root    root      220 May 15  2017 .bash_logout
+ 4 -rw-r--r--  1 root    root     3526 May 15  2017 .bashrc
+36 -rw-r-----  1 bandit9 bandit8 33033 May  7  2020 data.txt
+ 4 -rw-r--r--  1 root    root      675 May 15  2017 .profile
+
+# Command: cat data.txt
+# Output: Lines of text
+
+To sort out all this we will use sort and it's a great way to sort it.
+
+# Command: sort data.txt
+# Output: Sorted out data.txt file
+
+# Command: sort data.txt | uniq -c
+uniq -c used to count the lines of text occured
+# Ouput:
+     10 TKUtQbeYnEzzYIne7BinoBx2bHFLBXzG
+     10 TThRArdF2ZEXMO47TIYkyPPLtvzzLcDf
+     10 tVW9iY1Ml0uHPK4usZnN8oZXbjRt2ATY
+     10 U0NYdD3wHZKpfEg9qGQOLJimAJy6qxhS
+     10 UASW6CQwD6MRzftu6FAfyXBK0cVvnBLP
+     10 UJiCNvDNfgb3fcCj8PjjnAXHqUM63Uyj
+     10 UjsVbcqKeJqdCZQCDMkzv6A9X7hLbNE4
+      1 UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR ---> Password
+     10 UVnZvhiVQECraz5jl8U14sMVZQhjuXia
+     10 V2d9umHiuPLYLIDsuHj0frOEmreCZMaA
+     10 v9zaxkVAOdIOlITZY2uoCtB1fX2gmly9
+     
+Tip: The answer we've is the text repeated only once
+
+
+
+
+----- Bandit Level 9 → Level 10 -----
+## Level Goal
+The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+
+## Commands you may need to solve this level
+grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
+## Exit and connect to bandit9 server as we did recently.
+
+# Command: pwd
+# Ouput: /home/bandit9
+
+# Command: ls -apls
+# Output: total 40
+ 4 drwxr-xr-x  2 root     root     4096 May  7  2020 ./
+ 4 drwxr-xr-x 41 root     root     4096 May  7  2020 ../
+ 4 -rw-r--r--  1 root     root      220 May 15  2017 .bash_logout
+ 4 -rw-r--r--  1 root     root     3526 May 15  2017 .bashrc
+20 -rw-r-----  1 bandit10 bandit9 19379 May  7  2020 data.txt
+ 4 -rw-r--r--  1 root     root      675 May 15  2017 .profile
+
+
+# Command: cat data.txt
+# Ouput: output is too difficult to understand and unreadable so what should we do?
+Let's think about it Yes! I got an idea
+
+We can convert the text to strings right? Let's do this
+
+# Command: strings data.txt | grep "="
+We used grep to filter the text of lines with "=" as given in level.
+
+# Output:
+========== the*2i"4
+=:G e
+========== password
+<I=zsGi
+Z)========== is
+A=|t&E
+Zdb=
+c^ LAh=3G
+*SF=s
+&========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+S=A.H&^
+
+Now you can have an idea what's the password :)
+
+
+
+----- Bandit Level 10 → Level 11 -----
+## Level Goal
+The password for the next level is stored in the file data.txt, which contains base64 encoded data
+
+## Commands you may need to solve this level
+grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
+## Exit and connect to bandit10 server as we did recently.
+
+# Command: pwd
+# Output: /home/bandit10
+
+# Command: ls -apls
+# Output: total 24
+4 drwxr-xr-x  2 root     root     4096 May  7  2020 ./
+4 drwxr-xr-x 41 root     root     4096 May  7  2020 ../
+4 -rw-r--r--  1 root     root      220 May 15  2017 .bash_logout
+4 -rw-r--r--  1 root     root     3526 May 15  2017 .bashrc
+4 -rw-r-----  1 bandit11 bandit10   69 May  7  2020 data.txt
+4 -rw-r--r--  1 root     root      675 May 15  2017 .profile
+
+# Command: cat data.txt
+# Output: VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg==
+
+It's a Base64 and Base64 is a group of binary-to-text encoding schemes that represent binary data (more specifically, a sequence of 8-bit bytes) in sequences of 24 bits that can be represented by four 6-bit Base64 digits.
+
+Right now it's in a incrypted format or you can say incoded that means hidden in a combination so no can easily hack it.
+
+We need to decode it by using decode command below...
+
+# Command: base64 -d data.txt
+base64 to use base64 and -d to decode an incoded file that's it simple :)
+
+# Output: The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
+
+
+----- Bandit Level 11 → Level 12 -----
+## Level Goal
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+
+## Commands you may need to solve this level
+grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
+## Exit and connect to bandit11 server as we did recently.
+
+# Command: pwd
+# Output: /home/bandit11
+
+# Command: ls -apls
+# Output: total 24
+4 drwxr-xr-x  2 root     root     4096 May  7  2020 ./
+4 drwxr-xr-x 41 root     root     4096 May  7  2020 ../
+4 -rw-r--r--  1 root     root      220 May 15  2017 .bash_logout
+4 -rw-r--r--  1 root     root     3526 May 15  2017 .bashrc
+4 -rw-r-----  1 bandit12 bandit11   49 May  7  2020 data.txt
+4 -rw-r--r--  1 root     root      675 May 15  2017 .profile
+
+# Command: cat data.txt
+# Output: Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+
+You need to goto on this site to decode this combination which is Rot13 that means it's rotated on 13 positions.
+
+Site Reference: https://gchq.github.io/CyberChef/
+
+Search for rot13 on the left side then drag and drop into Recipe section.
+
+Input Output text you'll get this result: The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
